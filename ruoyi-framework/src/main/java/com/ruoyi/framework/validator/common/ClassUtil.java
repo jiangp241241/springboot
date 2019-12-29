@@ -1,5 +1,6 @@
 package com.ruoyi.framework.validator.common;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Map;
 
@@ -82,7 +83,8 @@ public class ClassUtil {
 		boolean isArray = isArray(data);
 		boolean isMap = isMap(data);
 		boolean isCollection = isCollection(data);
-		if (isBaseType || isArray || isMap || isCollection) {
+		boolean isBigDecimal = data instanceof BigDecimal;
+		if (isBaseType || isArray || isMap || isCollection || isBigDecimal) {
 			return false;
 		}
 		return true;
