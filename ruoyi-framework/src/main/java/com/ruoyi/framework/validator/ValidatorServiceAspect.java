@@ -20,10 +20,10 @@ import com.ruoyi.framework.validator.handler.HandlerFactory;
  */
 @Aspect
 @Component
-public class ServiceValidatorAspect {
+public class ValidatorServiceAspect {
 
 	private static final Logger log = LoggerFactory
-			.getLogger(ServiceValidatorAspect.class);
+			.getLogger(ValidatorServiceAspect.class);
 
 	@Around("execution(* com.ruoyi..controller..*.*(..))")
 	public Object around(ProceedingJoinPoint pjd) {
@@ -107,6 +107,7 @@ public class ServiceValidatorAspect {
 		Class<?>[] parameterTypes = null;
 		try {
 			clazz = Class.forName(classType);
+			methodName = pjd.getSignature().getName();
 			parameterTypes = ((MethodSignature) pjd.getSignature()).getMethod()
 					.getParameterTypes();
 			method = clazz.getDeclaredMethod(methodName, parameterTypes);
