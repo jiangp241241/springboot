@@ -1,7 +1,11 @@
 package com.ruoyi.framework.validator.chain;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.validation.DataBinder;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ruoyi.framework.validator.Exception.ApplicationException;
 
@@ -37,6 +41,15 @@ public class FilterChain {
 			return true;
 		}
 		if (param instanceof HttpServletRequest) {
+			return true;
+		}
+		if (param instanceof DataBinder) {
+			return true;
+		}
+		if (param instanceof ServletRequest) {
+			return true;
+		}
+		if (param instanceof MultipartFile) {
 			return true;
 		}
 		return false;
