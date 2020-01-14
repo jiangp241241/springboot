@@ -71,6 +71,12 @@
 			<groupId>com.ruoyi</groupId>
 			<artifactId>ruoyi-generator</artifactId>
 		</dependency>
+		
+		<!-- 依赖common工程 -->
+		<dependency>
+			<groupId>com.ruoyi</groupId>
+			<artifactId>ruoyi-common</artifactId>
+		</dependency>
 
 	</dependencies>
 
