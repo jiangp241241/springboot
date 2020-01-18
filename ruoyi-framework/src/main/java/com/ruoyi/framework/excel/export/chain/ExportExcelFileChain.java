@@ -107,10 +107,10 @@ public abstract class ExportExcelFileChain extends ExportExcelValidChain {
 		try {
 			this.fileTemplateInputStream = new FileInputStream(excelContextPath);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new BusinessException("getFileTemplateInputstream falied:"
+					+ e.getMessage());
 		}
-		// System.out.println("test");
+
 	}
 
 	/**

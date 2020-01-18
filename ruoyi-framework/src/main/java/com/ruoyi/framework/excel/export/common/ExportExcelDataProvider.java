@@ -2,6 +2,7 @@ package com.ruoyi.framework.excel.export.common;
 
 import java.util.Map;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.ruoyi.framework.validator.Exception.ApplicationException;
@@ -40,7 +41,7 @@ public abstract class ExportExcelDataProvider {
 	 * 
 	 * @param workbook
 	 */
-	public abstract void modifyExcelTemplate(XSSFWorkbook workbook);
+	public abstract void modifyExcelTemplate(HSSFWorkbook workbook);
 
 	public Map<String, String[]> getParameters() {
 		return parameters;

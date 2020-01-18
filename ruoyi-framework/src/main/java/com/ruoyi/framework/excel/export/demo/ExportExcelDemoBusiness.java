@@ -3,6 +3,7 @@ package com.ruoyi.framework.excel.export.demo;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +27,7 @@ public class ExportExcelDemoBusiness extends ExportExcelDataProvider {
 	}
 
 	@Override
-	public void modifyExcelTemplate(XSSFWorkbook workbook) {
+	public void modifyExcelTemplate(HSSFWorkbook workbook) {
 
 	}
 

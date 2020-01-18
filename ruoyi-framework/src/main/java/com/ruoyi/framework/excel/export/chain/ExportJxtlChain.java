@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +34,7 @@ public class ExportJxtlChain extends ExportExcelResponseChain {
 	@Override
 	public void export5(Map<String, String[]> parameterMap,
 			HttpServletResponse response) throws ApplicationException {
-		XSSFWorkbook workbook = null;
+		HSSFWorkbook workbook = null;
 		InputStream tempInputStream = null;
 		try {
 			Map<String, Object> businessData = this.dataProvider
@@ -42,7 +43,7 @@ public class ExportJxtlChain extends ExportExcelResponseChain {
 					this.tempFileOutputStream, businessData);
 			File outFile = new File(this.tempFile.getAbsolutePath());
 			tempInputStream = new FileInputStream(outFile);
-			workbook = new XSSFWorkbook(tempInputStream);
+			workbook = new HSSFWorkbook(tempInputStream);
 			this.dataProvider.modifyExcelTemplate(workbook);
 			this.tempFileOutputStream.flush();
 			workbook.write(response.getOutputStream());
@@ -62,7 +63,7 @@ public class ExportJxtlChain extends ExportExcelResponseChain {
 	 * @param workbook
 	 * @param tempInputStream
 	 */
-	private void close(XSSFWorkbook workbook, InputStream tempInputStream) {
+	private void close(HSSFWorkbook workbook, InputStream tempInputStream) {
 		try {
 			if (workbook != null) {
 				workbook.close();
