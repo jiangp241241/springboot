@@ -1,6 +1,8 @@
 package com.ruoyi.framework.excel.export.chain;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -101,8 +103,14 @@ public abstract class ExportExcelFileChain extends ExportExcelValidChain {
 	private void getFileTemplateInputstream() throws ApplicationException {
 		String excelContextPath = ExportExcelConstants.Common.EXCEL_PATH + "/"
 				+ this.excelType;
-		this.fileTemplateInputStream = this.getClass().getClassLoader()
-				.getResourceAsStream(excelContextPath);
+		excelContextPath = this.contextPath + excelContextPath;
+		try {
+			this.fileTemplateInputStream = new FileInputStream(excelContextPath);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// System.out.println("test");
 	}
 
 	/**
@@ -138,6 +146,8 @@ public abstract class ExportExcelFileChain extends ExportExcelValidChain {
 			HttpServletResponse response) {
 		this.getFileTemplate();
 		this.getFileTemplateInputstream();
+		this.createTempFile();
+		getTempFileOutPutStream();
 		export4(parameterMap, response);
 		close();
 	}

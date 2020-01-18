@@ -76,6 +76,6 @@ public abstract class ExportExcelTaskChain extends ExportExcelChain {
 	 * @param response
 	 * @throws ApplicationException
 	 */
-	public abstract void export2(HttpServletRequest request,
+	protected abstract void export2(HttpServletRequest request,
 			HttpServletResponse response) throws ApplicationException;
 }

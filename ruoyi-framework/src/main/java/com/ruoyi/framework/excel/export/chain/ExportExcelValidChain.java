@@ -63,7 +63,7 @@ public abstract class ExportExcelValidChain extends ExportExcelTaskChain {
 		if (excelTypeArray == null || excelTypeArray.length == 0) {
 			throw new IllegalArgumentException("excelType is null");
 		}
-		String excelType = excelTypeArray[0];
+		excelType = excelTypeArray[0];
 		if (StringUtils.isEmpty(excelType)) {
 			throw new IllegalArgumentException("excelType is null");
 		}
@@ -92,7 +92,7 @@ public abstract class ExportExcelValidChain extends ExportExcelTaskChain {
 		if (bean == null) {
 			throw new BusinessException("data provider bean is null");
 		}
-		if (bean instanceof ExportExcelDataProvider) {
+		if (!(bean instanceof ExportExcelDataProvider)) {
 			throw new BusinessException("data provider bean is null");
 		}
 		dataProvider = (ExportExcelDataProvider) bean;

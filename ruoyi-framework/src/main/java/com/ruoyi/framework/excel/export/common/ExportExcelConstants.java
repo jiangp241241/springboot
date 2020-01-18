@@ -19,7 +19,7 @@ public interface ExportExcelConstants {
 		/**
 		 * 导出excel文件目录
 		 */
-		public String EXCEL_PATH = "/excel/export/";
+		public String EXCEL_PATH = "/excel/export";
 
 		/**
 		 * 导出excel临时文件目录
